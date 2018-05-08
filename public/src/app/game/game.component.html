@@ -1,0 +1,25 @@
+<div id="exitGame" (click)="exitGame()">EXIT</div>
+
+<div id="gamecontainer">
+
+  <div id="gameoverbox" *ngIf="gameover != false">
+    <div class="winner" *ngIf="gameover.winner == true">
+        <span id="thewinner">{{gameover.username}}</span><br>
+      YOU ARE THE WINNER!<br>
+      <div class="exitGameBanner" (click)="exitGame()">EXIT GAME</div>
+    </div>
+    <div class="notwinner" *ngIf="gameover.winner == false">
+        <span id="thewinner">{{gameover.username}}</span>
+        IS THE WINNER!<br>
+        <div class="exitGameBanner" (click)="exitGame()">EXIT GAME</div>
+    </div>
+  </div>
+
+  <h2 class="cardName">{{cardName}}</h2>
+
+  <div class="sqbox">
+    <div  *ngFor="let sq of card; let idx = index" (click)="boxClick(sq, idx)" class="sq {{sq.class}}">
+      <span class="blurb" >{{sq.blurb}}</span>
+    </div>
+  </div>
+</div>

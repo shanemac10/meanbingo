@@ -1,0 +1,38 @@
+#signin{
+    margin: 3em auto;
+    text-align: center;
+    cursor: pointer;
+}
+#signin label{
+    display: block;
+    font-size: 3.5em;
+    color: white;
+}
+#signin input{
+    display: block;
+    font-size: 2.5em;
+    text-align: center;
+    width: 300px;
+    margin: 10px auto;
+    cursor: text;
+}
+
+#signin button{
+    display: block;
+    font-size: 2em;
+    margin: 40px auto 0;
+    padding: 8px 16px;
+    border: 1px solid #02b102;
+    color: white;
+    border-radius: 6px;
+    background-color:#02b102;
+    box-shadow: 0px 5px 9px #253aa6;
+    cursor: pointer;
+}
+#signin button:disabled{
+    color: #a4a4a4;
+    border-color: #086908;
+    background-color: #086908;
+    text-shadow:none;
+    box-shadow: none;
+}

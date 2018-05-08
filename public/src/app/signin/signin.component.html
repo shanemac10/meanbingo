@@ -1,0 +1,10 @@
+<div id="signin">
+  <form (submit)="submitUsername()">
+    <label for="username">Username</label>
+    <input type="text" name="username" [(ngModel)]="username" value={{username}}>
+    <button [disabled]="username.length < 2" type="submit"> Jump In! </button>
+  </form>
+  <div id="feedbackbox" *ngFor="let x of feedback">
+    <span class="feedback">{{x}}</span>
+  </div>
+</div>

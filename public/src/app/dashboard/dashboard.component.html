@@ -1,0 +1,81 @@
+<div id="dashboardgrid">
+
+  <div class="panel board">
+    <form>
+      <label class="lable" for="slate" >TOPIC</label>
+      <select name="slate" [(ngModel)]="slate">
+        <option value="1" >Conference Call &ensp;</option>
+        <option value="2" >Wal-Mart &ensp;</option>
+        <option value="3" >Dojo Demo Night &ensp;</option>
+      </select>
+    </form>
+  </div>
+
+
+
+
+  <div class="panel players">
+    <table>
+        <tr>
+          <td class="lable">PLAYERS</td><td class="transparent"></td>
+        </tr>
+        <tr *ngFor="let x of ready_users">
+          <td *ngIf="x.user_id === my_user_id" class="currentuser" (click)="clear()"  >{{x.username}}</td>
+          <td *ngIf="x.user_id !== my_user_id" >{{x.username}}</td>
+          <td class="transparent">
+              <div class="playerready" *ngIf="x.status=='READY'"></div>
+              <div class="playernotready" *ngIf="x.status=='NOT_READY'"></div>
+          </td>
+        </tr>
+        <tr *ngFor="let x of waiting_on">
+          <td *ngIf="x.user_id === my_user_id" class="currentuser" (click)="clear()" >{{x.username}}</td>
+          <td *ngIf="x.user_id !== my_user_id" >{{x.username}}</td>
+          <td class="transparent">
+              <div class="playerready" *ngIf="x.status=='READY'"></div>
+              <div class="playernotready" *ngIf="x.status=='NOT_READY'"></div>
+          </td>
+        </tr>
+    </table>
+  </div>
+
+
+  <div id="toggleready">
+
+    <div *ngIf="my_status == 'READY' " class="bumper">
+      <span class="bigger">READY!</span>
+      <br><br>
+      <button (click)="setNotReady()" class="greybutt" >WAIT, I'M NOT READY!</button>
+    </div>
+
+    <div *ngIf="my_status == 'NOT_READY'" class="bumper">
+      LET EVERYONE KNOW YOU ARE READY!
+      <br><br>
+      <button (click)="setReady()" class="greenbutt">I'M READY!</button>
+    </div>
+
+    <div *ngIf="my_status == 'PLAYING' " class="goback">
+      LOOKS LIKE YOU WERE IN A GAME.<br>
+      WOULD YOU LIKE TO RETURN?<br> 
+      <span class="gameplaying">{{game_name_if_in_playing_status}}</span>
+      <div class="bigbumper"><button (click)="goBackToMyGame()" class="greenbutt" >YES, GO BACK NOW</button></div>
+      <button (click)="exitThatGame()" class="greybutt" >NO, EXIT THAT GAME</button>
+    </div>
+
+  </div>
+
+
+  <div *ngIf="my_status != 'PLAYING'" id="playbuttons">
+    <div *ngIf="waiting_on.length; else allready">
+      <span id="waitingon">...waiting on <br>
+        <span *ngFor="let name of waiting_on">
+          {{name.username}} <br>
+        </span>
+      </span>
+      <div *ngIf="my_status == 'READY'" id="playanyway" (click)="playBingo()" >PLAY ANYWAY</div>
+    </div>
+    <ng-template #allready >
+        <div id="allready" (click)="playBingo()" >PLAY!</div>
+    </ng-template>
+  </div>
+
+</div><!-- END dashboardgrid -->
