@@ -7,7 +7,7 @@ export class SocketService {
   private socket: SocketIOClient.Socket;
   constructor() { 
     // this.socket = io("http://localhost:8080");
-    this.socket = io("13.59.119.14:8080");
+    this.socket = io("18.188.212.124:8080");
   }
 
   //=== STATUS CHANGES ===//
