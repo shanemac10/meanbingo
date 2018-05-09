@@ -6,8 +6,8 @@ import * as io from 'socket.io-client';
 export class SocketService {
   private socket: SocketIOClient.Socket;
   constructor() { 
-    // this.socket = io("http://localhost:8080");
-    this.socket = io("http://18.188.212.124:8080");
+    this.socket = io("http://localhost:8080");
+    // this.socket = io("http://18.188.212.124:8080");
   }
 
   //=== STATUS CHANGES ===//
